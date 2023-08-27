@@ -198,4 +198,18 @@ From
 		From Invoice
 		Group by 2
 		Order by 4,3 Desc) As A
+	
+/* Q14. Find hierarchy of the employees.*/
 
+with recursive cte as (
+select employee_id,first_name, last_name,title, reports_to, 1 as lvl
+from employee
+where employee_id ='9'
+union
+select employee.employee_id,employee.first_name, employee.last_name,employee.title,employee. reports_to, lvl +1 as lvl
+from cte
+join employee on cte.employee_id = employee.reports_to )
+
+SELECT c.employee_id,c.first_name, c.last_name,c.title, e.first_name as reports_to, c.lvl
+FROM cte c
+join employee e on c.reports_to = e.employee_id;
