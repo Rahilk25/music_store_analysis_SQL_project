@@ -14,7 +14,8 @@ Order by C Desc;
 /* Q3: What are top 3 values of total invoice? */
 Select Total
 From Invoice
-Order by Total Desc;
+Order by Total Desc
+Limit 3;
 
 /* Q4: Which city has the best customers? We would like to throw a promotional Music
 Festival in the city we made the most money.
